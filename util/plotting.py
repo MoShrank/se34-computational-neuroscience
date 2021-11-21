@@ -12,7 +12,7 @@ def plot_voltage_trace(voltage_trace, v_th, dt, sim_length):
     plt.xlabel("Time (ms)")
     plt.ylabel("V (mV)")
     plt.legend(
-        ["Membrane\npotential", None, r"Threshold V$_{\mathrm{th}}$"], loc=[1.05, 0.75]
+        ["Membrane\npotential", r"Threshold V$_{\mathrm{th}}$"], loc=[1.05, 0.75]
     )
     plt.ylim([-80, -40])
 
@@ -34,7 +34,7 @@ def plot_voltage_trace_with_sra(voltage_trace, v_th, dt, sim_length, sra):
 
     plt.xlabel("Time (ms)")
     plt.legend(
-        ["Membrane\npotential", None, r"Threshold V$_{\mathrm{th}}$"], loc=[1.05, 0.75]
+        ["Membrane\npotential", r"Threshold V$_{\mathrm{th}}$"], loc=[1.05, 0.75]
     )
     plt.show()
 

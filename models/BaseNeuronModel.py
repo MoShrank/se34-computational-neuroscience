@@ -16,7 +16,7 @@ class BaseNeuronModel(ABC):
         v_th: float = -55.0,
         v_reset: float = -75.0,
         tau_m: float = 10.0,
-        R: float = 20.0,
+        R: float = 90.0,
     ):
         """
         Args:

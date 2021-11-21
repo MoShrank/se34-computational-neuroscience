@@ -21,7 +21,7 @@ class LIF_Spike_Rate_Adaption(BaseNeuronModel):
         super().__init__(*args, **kwargs)
 
         self.E_k = E_k
-        self.g_delta = g_delta / self.tau_m
+        self.g_delta = g_delta
         self.tau_g = tau_g
 
         self.sra = [0.0]
@@ -49,14 +49,16 @@ class LIF_Spike_Rate_Adaption(BaseNeuronModel):
             # relax sra conductance exponentially to 0
             d_sra = -self.sra[-1] * (self.dt / self.tau_g)
 
+        sra = self.sra[-1] + d_sra
+
         # calculate membrane voltage change
         dv = (
             (self.dt / self.tau_m) * (self.E_l - v)
-            - (self.tau_m * self.sra[-1] * (v - self.E_k))
+            - (self.tau_m * sra * (v - self.E_k))
             + (input_current / self.R)
         )
 
         v += dv
 
-        self.sra += [self.sra[-1] + d_sra]
+        self.sra += [sra]
         self.voltages += [v]
