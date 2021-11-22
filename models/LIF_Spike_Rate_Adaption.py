@@ -21,7 +21,7 @@ class LIF_Spike_Rate_Adaption(BaseNeuronModel):
         super().__init__(*args, **kwargs)
 
         self.E_k = E_k
-        self.g_delta = g_delta
+        self.g_delta = g_delta / self.tau_m
         self.tau_g = tau_g
 
         self.sra = [0.0]

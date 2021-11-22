@@ -27,16 +27,16 @@ def plot_voltage_trace_with_sra(voltage_trace, v_th, dt, sim_length, sra):
     axs[0].axhline(v_th, 0, 1, color="k", ls="--")
     axs[0].set_ylim([-80, -40])
     axs[0].set_ylabel("V (mV)")
+    axs[0].legend(
+        ["Membrane\npotential", r"Threshold V$_{\mathrm{th}}$"], loc=[1.05, 0.3]
+    )
 
     # plot spike rate adaption values
-    axs[1].plot(sim_range, sra, "b")
+    axs[1].plot(sim_range, sra, "r")
     axs[1].set_ylabel("SRA (mV)")
+    axs[1].legend(["Spike rate\nadaption"], loc=[1.05, 0.5])
 
     plt.xlabel("Time (ms)")
-    plt.legend(
-        ["Membrane\npotential", r"Threshold V$_{\mathrm{th}}$"], loc=[1.05, 0.75]
-    )
-    plt.show()
 
 
 def plot_spikes(spike_times, dt, sim_length):
@@ -44,7 +44,8 @@ def plot_spikes(spike_times, dt, sim_length):
     plt.eventplot(np.array(spike_times) * dt, linelengths=4, colors="k")
     plt.xlim([0, sim_length * dt])
 
+    plt.yticks([])
+
     plt.title("Spike Times")
-    plt.xlabel("Neuron")
+    plt.xlabel("Time (ms)")
     plt.ylabel("Spike")
-    plt.show()
