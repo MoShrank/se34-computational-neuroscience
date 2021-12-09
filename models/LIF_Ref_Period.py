@@ -29,7 +29,7 @@ class LIF_Ref_Period(BaseNeuronModel):
                 self.ref_count = self.t_ref / self.dt
 
             # calculate membrane voltage change
-            dv = (self.dt / self.tau_m) * (self.E_l - v) + (input_current / self.R)
+            dv = (self.dt / self.tau_m) * ((self.E_l - v) + (input_current / self.R))
 
             v += dv
 

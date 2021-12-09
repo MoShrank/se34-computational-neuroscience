@@ -11,7 +11,7 @@ class LIF(BaseNeuronModel):
             v = self.v_reset
 
         # calculate membrane voltage change
-        dv = (self.dt / self.tau_m) * (self.E_l - v) + (input_current / self.R)
+        dv = (self.dt / self.tau_m) * ((self.E_l - v) + (input_current / self.R))
 
         v += dv
 

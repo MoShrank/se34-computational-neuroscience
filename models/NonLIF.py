@@ -1,7 +1,7 @@
 from models.BaseNeuronModel import BaseNeuronModel
 
 
-class LI(BaseNeuronModel):
+class NonLIF(BaseNeuronModel):
     def step(self, input_current: float):
         v = self.voltages[-1]
 
@@ -11,7 +11,7 @@ class LI(BaseNeuronModel):
             v = self.v_reset
 
         # calculate membrane voltage change
-        dv = (self.dt / self.tau_m) + (input_current / self.R)
+        dv = (self.dt / self.tau_m) * (input_current / self.R)
 
         v += dv
 

@@ -52,8 +52,8 @@ class LIF_Spike_Rate_Adaption(BaseNeuronModel):
         sra = self.sra[-1] + d_sra
 
         # calculate membrane voltage change
-        dv = (
-            (self.dt / self.tau_m) * (self.E_l - v)
+        dv = (self.dt / self.tau_m) * (
+            (self.E_l - v)
             - (self.tau_m * sra * (v - self.E_k))
             + (input_current / self.R)
         )
